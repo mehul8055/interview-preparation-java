@@ -11,10 +11,8 @@ public class Employee {
 	private String email;
 	private double salary;
 	private Department department;
-
 	
 	public Employee() {
-		super();
 	}
 
 	/**
