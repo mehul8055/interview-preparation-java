@@ -25,7 +25,6 @@ public class Employee {
 	 * @param department
 	 */
 	public Employee(long id, String name, String email, double salary, Department department) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;

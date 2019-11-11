@@ -10,7 +10,7 @@ import com.mehul.model.Employee;
  * @author Mehul
  *
  */
-public class StreamExample {
+public class StreamExample { 
 
 	/**
 	 * @param args
