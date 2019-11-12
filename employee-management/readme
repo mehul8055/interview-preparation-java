@@ -1,0 +1,10 @@
+Employee Management is showing below option based on Spring Rest application
+- Create New Employee and store it into MySql Database
+- Get All Employees available in MySQL database
+
+This project is based on Spring Boot and it uses below spring modules
+- Spring Data JPA
+- MySql
+- Spring Repository
+- Spring Rest
+- Spring Security
