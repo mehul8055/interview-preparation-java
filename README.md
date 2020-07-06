@@ -7,3 +7,4 @@ Planning to add below topics
 4. Micro Services
 5. JPA Hibernate
 6. Docker Openshift
+7. Angular and Bootstrap UI
