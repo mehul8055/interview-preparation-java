@@ -20,12 +20,12 @@ import java.util.stream.Stream;
 public class Java8FileProcessing {
 
 	public static void main(String[] args) throws IOException, URISyntaxException {
-		//processEmployee();
-		// countWord();
-		findLongestLine();
+		employeeSummary();
+		countWord();
+		// findLongestLine();
 	}
 
-	public static void processEmployee() throws IOException, URISyntaxException {
+	public static void employeeSummary() throws IOException, URISyntaxException {
 		// Create Stream of line from file employee.csv located in src/main/resources
 		Stream<String> employees = Files.lines(
 				Paths.get(ClassLoader.getSystemResource("employee.csv").toURI()),
@@ -60,8 +60,19 @@ public class Java8FileProcessing {
 			.collect(Collectors.toMap(word -> word, word -> 1, Integer::sum));
 
 		lines.close();
+		
+		lines = Files.lines(
+				Paths.get(ClassLoader.getSystemResource("wordcount.txt").toURI()),
+				StandardCharsets.UTF_8);
+		Map<String, Long> wordCountMapUsingGroupBy
+		= lines.map(line -> line.split("\\s+"))
+			.flatMap(Arrays::stream)
+			.collect(Collectors.groupingBy(word -> word, Collectors.counting()));
+
+		lines.close();
 
 		System.out.println(wordCountMap);
+		System.out.println(wordCountMapUsingGroupBy);
 	}
 
 	public static void findLongestLine() throws IOException, URISyntaxException {

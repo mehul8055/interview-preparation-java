@@ -20,9 +20,9 @@ public class EmployeeRepository {
 
 		Employee itEmp1 = new Employee(1l, "Mehul Lakhatariya", "mehul@gmail.com", 15000.00, it);
 		Employee itEmp2 = new Employee(2l, "Raju Jadav", "raju@gmail.com", 25000.00, it);
-		Employee itEmp3 = new Employee(3l, "Mahesh Patel", "mahesh@gmail.com", 35000.00, it);
+		Employee itEmp3 = new Employee(3l, "Mahesh Patel", "mahesh@gmail.com", 15000.00, it);
 		Employee itEmp4 = new Employee(4l, "Prabhu Jagani", "prabhu@gmail.com", 45000.00, it);
-		Employee itEmp5 = new Employee(5l, "Pradip Rajguru", "pradip@gmail.com", 55000.00, it);
+		Employee itEmp5 = new Employee(5l, "Pradip Rajguru", "pradip@gmail.com", 15000.00, it);
 		Employee itEmp6 = new Employee(6l, "Bhavesh Malvai", "bhavesh@gmail.com", 65000.00, it);
 		Employee itEmp7 = new Employee(7l, "Dharmendra", "dharmendra@gmail.com", 75000.00, it);
 		Employee itEmp8 = new Employee(8l, "Rajesh Vishwakarma", "rajesh@gmail.com", 60000.00, it);
@@ -39,12 +39,12 @@ public class EmployeeRepository {
 		employees.add(itEmp9);
 		employees.add(itEmp10);
 
-		Employee salesEmp1 = new Employee(11l, "Yudhisthir", "yudhisthir@gmail.com", 100000.00, sales);
+		Employee salesEmp1 = new Employee(11l, "Yudhisthir Pandav", "yudhisthir@gmail.com", 100000.00, sales);
 		Employee salesEmp2 = new Employee(12l, "Bhim", "bhim@gmail.com", 200000.00, sales);
 		Employee salesEmp3 = new Employee(13l, "Arjun", "arjun@gmail.com", 300000.00, sales);
 		Employee salesEmp4 = new Employee(14l, "Sahdev", "sahdev@gmail.com", 400000.00, sales);
 		Employee salesEmp5 = new Employee(15l, "Nakul", "nakul@gmail.com", 500000.00, sales);
-		Employee salesEmp6 = new Employee(16l, "Krishna", "krishna@gmail.com", 600000.00, sales);
+		Employee salesEmp6 = new Employee(16l, "Krishna Yadav", "krishna@gmail.com", 600000.00, sales);
 		Employee salesEmp7 = new Employee(17l, "Dhrustdhumn", "dhrustdhumn@gmail.com", 700000.00, sales);
 		Employee salesEmp8 = new Employee(18l, "Shikhandi", "shikhandi@gmail.com", 800000.00, sales);
 		Employee salesEmp9 = new Employee(19l, "Abhimanyu", "abhimanyu@gmail.com", 900000.00, sales);
