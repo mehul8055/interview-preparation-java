@@ -22,7 +22,7 @@ public class Java8FileProcessing {
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		employeeSummary();
 		countWord();
-		// findLongestLine();
+		findLongestLine();
 	}
 
 	public static void employeeSummary() throws IOException, URISyntaxException {
