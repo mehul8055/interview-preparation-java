@@ -1,5 +1,11 @@
 package com.mehul.multithreading;
 
+import java.util.Random;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @author Mehul
  *
@@ -7,83 +13,137 @@ package com.mehul.multithreading;
 public class ProducerConsumer {
 
 	public static void main(String[] args) {
-		CustomQueue queue = new CustomQueue();
-		new Consumer(queue);
-		new Producer(queue);
-	}
-}
-
-class CustomQueue {
-	int number;
-	boolean isQueueFull = Boolean.FALSE;
-
-	synchronized void put(int number) {
-		if (isQueueFull) {
-			try {
-				wait();
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		this.number = number;
-		System.out.println("Produced Number : " + number);
-		isQueueFull = Boolean.TRUE;
-		notify();
+		ExecutorService service = Executors.newFixedThreadPool(4);
+		usingArrayBlockingQueue(service);
+		usingBlockingQueueWithLock(service);
+		usingBlockingQueueWithWaitNotify(service);
 	}
 
-	synchronized int get() {
-		if (!isQueueFull) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		System.out.println("Consume Number : " + number);
-		isQueueFull = Boolean.FALSE;
-		notify();
-		return number;
+	private static void usingArrayBlockingQueue(ExecutorService service) {
+		BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(5);
+		service.execute(new Producer(queue));
+		service.execute(new Producer(queue));
+		service.execute(new Consumer(queue));
+		service.execute(new Consumer(queue));
+	}
+
+	private static void usingBlockingQueueWithLock(ExecutorService service) {
+		BlockingQueueWithLock<Integer> queue = new BlockingQueueWithLock<Integer>(5);
+		service.execute(new ProducerWithLock(queue));
+		service.execute(new ProducerWithLock(queue));
+		service.execute(new ConsumerWithLock(queue));
+		service.execute(new ConsumerWithLock(queue));
+	}
+
+	private static void usingBlockingQueueWithWaitNotify(ExecutorService service) {
+		BlockingQueueWithWaitNotify<Integer> queue = new BlockingQueueWithWaitNotify<Integer>(5);
+		service.execute(new ProducerWithWaitNotify(queue));
+		service.execute(new ProducerWithWaitNotify(queue));
+		service.execute(new ConsumerWithWaitNotify(queue));
+		service.execute(new ConsumerWithWaitNotify(queue));
 	}
 }
 
 class Producer implements Runnable {
+	private BlockingQueue<Integer> queue;
 
-	CustomQueue queue;
-
-	/**
-	 * @param queue
-	 */
-	public Producer(CustomQueue queue) {
+	public Producer(BlockingQueue<Integer> queue) {
 		this.queue = queue;
-		new Thread(this).start();
 	}
 
 	@Override
 	public void run() {
-		int number = 1;
 		while (true) {
-			queue.put(number++);
+			int nextInt = new Random().nextInt();
+			queue.add(nextInt);
+			System.out.println("Produced using ArrayBlockingQueue :: " + nextInt);
 		}
 	}
 }
 
 class Consumer implements Runnable {
+	private BlockingQueue<Integer> queue;
 
-	CustomQueue queue;
-
-	/**
-	 * @param queue
-	 */
-	public Consumer(CustomQueue queue) {
+	public Consumer(BlockingQueue<Integer> queue) {
 		this.queue = queue;
-		new Thread(this).start();
 	}
 
 	@Override
 	public void run() {
 		while (true) {
-			queue.get();
+			try {
+				Integer value = queue.take();
+				System.out.println("Consumed using ArrayBlockingQueue :: " + value);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+}
+
+class ProducerWithLock implements Runnable {
+	private BlockingQueueWithLock<Integer> queue;
+
+	public ProducerWithLock(BlockingQueueWithLock<Integer> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			int nextInt = new Random().nextInt();
+			queue.add(nextInt);
+			System.out.println("Produced using BlockingQueueWithLock :: " + nextInt);
+		}
+	}
+}
+
+class ConsumerWithLock implements Runnable {
+	private BlockingQueueWithLock<Integer> queue;
+
+	public ConsumerWithLock(BlockingQueueWithLock<Integer> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			Integer value = queue.take();
+			System.out.println("Consumed using BlockingQueueWithLock :: " + value);
+		}
+	}
+}
+
+class ProducerWithWaitNotify implements Runnable {
+	private BlockingQueueWithWaitNotify<Integer> queue;
+
+	public ProducerWithWaitNotify(BlockingQueueWithWaitNotify<Integer> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			int nextInt = new Random().nextInt();
+			queue.add(nextInt);
+			System.out.println("Produced using BlockingQueueWithWaitNotify :: " + nextInt);
+		}
+	}
+}
+
+class ConsumerWithWaitNotify implements Runnable {
+	private BlockingQueueWithWaitNotify<Integer> queue;
+
+	public ConsumerWithWaitNotify(BlockingQueueWithWaitNotify<Integer> queue) {
+		this.queue = queue;
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			Integer value = queue.take();
+			System.out.println("Consumed using BlockingQueueWithWaitNotify :: " + value);
 		}
 	}
 }
