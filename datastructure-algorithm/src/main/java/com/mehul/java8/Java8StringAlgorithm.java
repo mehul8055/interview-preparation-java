@@ -6,6 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * This class is used to Perform String related algorithm, Some algorithm are as
+ * follows
+ * <ul>
+ * <li>Reverse word in String</li>
+ * <li>Check words are anagram or not</li>
+ * <li>Find duplicate characters and its occurrence in String</li>
+ * </ul>
+ * 
  * @author Mehul
  *
  */
