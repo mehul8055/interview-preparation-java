@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * <li>Find duplicate characters and its occurrence in String</li>
  * </ul>
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class Java8StringAlgorithm {

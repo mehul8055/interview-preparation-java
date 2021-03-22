@@ -7,7 +7,7 @@ import com.mehul.model.Department;
 import com.mehul.model.Employee;
 
 /**
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class EmployeeRepository {

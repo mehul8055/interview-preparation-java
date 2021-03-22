@@ -1,7 +1,7 @@
 package com.mehul.model;
 
 /**
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class Employee {

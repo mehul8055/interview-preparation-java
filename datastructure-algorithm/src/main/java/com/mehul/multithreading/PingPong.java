@@ -4,7 +4,7 @@ package com.mehul.multithreading;
  * This class will demonstrate the thread communication and print Ping-Pong
  * alternatively with two thread
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class PingPong {
@@ -41,7 +41,7 @@ class PingPongThread implements Runnable {
 				System.out.println(msg);
 				lock.notify();
 				try {
-					Thread.sleep(500);
+					// Thread.sleep(500);
 					lock.wait();
 				} catch (InterruptedException e) {
 					e.printStackTrace();

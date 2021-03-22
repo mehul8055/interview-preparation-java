@@ -8,13 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Input : { "fizz", "fizz", "fizz", "buzz", "buzz", "abc", "abc" }
- * Output : 
- * fizz 3
- * buzz 2
- * abc 2
+ * Input : { "fizz", "fizz", "fizz", "buzz", "buzz", "abc", "abc" } Output :
+ * fizz 3 buzz 2 abc 2
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class CustomSort {

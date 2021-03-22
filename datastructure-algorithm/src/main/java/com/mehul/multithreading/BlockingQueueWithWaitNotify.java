@@ -7,7 +7,7 @@ import java.util.Queue;
  * 
  * This will Demonstrate the Custom Blocking queue using Wait Notify
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class BlockingQueueWithWaitNotify<E> {

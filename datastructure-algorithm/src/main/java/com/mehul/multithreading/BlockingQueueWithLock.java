@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 
  * This will Demonstrate the Custom Blocking queue using lock
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class BlockingQueueWithLock<E> {

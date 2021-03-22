@@ -1,7 +1,7 @@
 package com.mehul.multithreading;
 
 /**
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class EvenOdd {

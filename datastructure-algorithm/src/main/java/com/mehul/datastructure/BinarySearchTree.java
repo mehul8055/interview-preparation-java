@@ -1,7 +1,7 @@
 package com.mehul.datastructure;
 
 /**
- * This class is Binary Search tree, which will have below operation 
+ * This class is Binary Search tree, which will have below operation
  * <ul>
  * <li>Create Root Node</li>
  * <li>Insert any value in BST</li>
@@ -10,7 +10,8 @@ package com.mehul.datastructure;
  * <li>Post order traversal</li>
  * <li>Check whether provided value is present in BST or not</li>
  * </ul>
- * @author Mehul
+ * 
+ * @author Mehul Lakhatariya
  *
  */
 public class BinarySearchTree {

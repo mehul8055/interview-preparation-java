@@ -18,7 +18,7 @@ import java.util.Map;
  * Output: [0,1]</li>
  * </ul>
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class TwoSum {

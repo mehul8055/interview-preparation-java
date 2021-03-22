@@ -1,7 +1,7 @@
 package com.mehul.algorithm;
 
 /**
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class BalancedBracket {

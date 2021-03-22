@@ -1,7 +1,7 @@
 package com.mehul.datastructure;
 
 /**
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class SinglyLinkedList {

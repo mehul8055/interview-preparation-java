@@ -4,7 +4,7 @@ package com.mehul.core;
  * It Demonstrate the AutoClosable interface and created custom resource to use
  * in try-with-resource, try block without catch or even finally
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class ExceptionUnderstanding {

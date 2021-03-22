@@ -3,7 +3,7 @@ package com.mehul.java8;
 /**
  * This will demonstrated multiple inheritance
  * 
- * @author Mehul
+ * @author Mehul Lakhatariya
  *
  */
 public class MultipleInheritance implements First, Second, Third {
