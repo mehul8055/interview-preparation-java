@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class ThreadPool {
 
-	private BlockingQueue<Task> queue;
+	private BlockingQueue<Runnable> queue;
 
 	private boolean isShutdownInitiated = Boolean.FALSE;
 
@@ -31,14 +31,14 @@ public class ThreadPool {
 		}
 	}
 
-	public synchronized void execute(Task task) {
+	public synchronized void execute(Runnable task) {
 		if (isShutdownInitiated) {
-			System.out.println("Threadpool is already shutdown so, '" + task.getName() + "' is not accepted!");
+			System.out.println("Threadpool is already shutdown so, new task is not accepted!");
 			return;
 		}
 		try {
 			queue.put(task);
-			System.out.println("Task " + task.getName() + " is added!");
+			System.out.println("Task is added!");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -55,14 +55,14 @@ public class ThreadPool {
 
 	static class MyThread extends Thread {
 
-		private BlockingQueue<Task> queue;
+		private BlockingQueue<Runnable> queue;
 		private ThreadPool threadPool;
 
 		/**
 		 * @param queue
 		 * @param threadPool
 		 */
-		public MyThread(BlockingQueue<Task> queue, ThreadPool threadPool) {
+		public MyThread(BlockingQueue<Runnable> queue, ThreadPool threadPool) {
 			this.queue = queue;
 			this.threadPool = threadPool;
 		}
@@ -71,8 +71,8 @@ public class ThreadPool {
 		public void run() {
 			try {
 				while (true) {
-					Task task = queue.take();
-					task.perform();
+					Runnable task = queue.take();
+					task.run();
 					if (threadPool.isShutdownInitiated() && queue.size() == 0) {
 						this.interrupt();
 						Thread.sleep(1);
@@ -81,31 +81,6 @@ public class ThreadPool {
 			} catch (InterruptedException e) {
 				System.out.println(Thread.currentThread().getName() + " is Stopped now.");
 			}
-		}
-	}
-}
-
-class Task {
-
-	private String name;
-
-	/**
-	 * @param name
-	 */
-	public Task(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void perform() {
-		try {
-			System.out.println(Thread.currentThread().getName() + " is performing task " + name);
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 }

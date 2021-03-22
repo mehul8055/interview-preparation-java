@@ -26,4 +26,30 @@ public class ThreadPoolTest {
 
 		threadPool.execute(new Task("Task 13"));
 	}
+
+	static class Task implements Runnable {
+
+		private String name;
+
+		/**
+		 * @param name
+		 */
+		public Task(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		@Override
+		public void run() {
+			try {
+				System.out.println(Thread.currentThread().getName() + " is performing task " + name);
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

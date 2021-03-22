@@ -1,8 +1,6 @@
 package com.mehul.multithreading;
 
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * This class will demonstrate CountDownLatch, 
@@ -16,7 +14,7 @@ public class CountDownLatchExample {
 
 	public static void main(String[] args) {
 		CountDownLatch latch = new CountDownLatch(3);
-		ExecutorService service = Executors.newFixedThreadPool(2);
+		ThreadPool service = new ThreadPool(2);
 		service.execute(new DevelopmentTask("Development Task 1", latch));
 		service.execute(new DevelopmentTask("Development Task 2", latch));
 		service.execute(new DevelopmentTask("Development Task 3", latch));
