@@ -33,6 +33,18 @@ public class Java8StreamExample {
 		streamExample.findDepartmentSalary();
 		streamExample.sortBasedOnSalaryAndName();
 		streamExample.countByDeptUsingGroupBy();
+		streamExample.findHigestPaidEmployee();
+	}
+
+	private void findHigestPaidEmployee() {
+		Employee orElse = employees.stream().max(Comparator.comparing(Employee::getSalary)).orElse(null);
+		Employee orElseGet = employees
+		 .stream()
+				.sorted(Comparator.comparing(Employee::getSalary).reversed())
+		 .findFirst()
+		 .orElseGet(null);
+		System.out.println(orElse);
+		System.out.println(orElseGet);
 	}
 
 	public void findDepartmentSalary() {
